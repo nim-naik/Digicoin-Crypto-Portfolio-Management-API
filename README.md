@@ -1,6 +1,5 @@
-💬 **Digicoin – Crypto Portfolio Management API**
+💸 **Digicoin – Crypto Portfolio Management API**
 
-📌 **Overview**
 Digicoin is a FastAPI-based backend application for managing a virtual cryptocurrency portfolio. It allows users to register, authenticate securely using JWT, add funds, trade crypto assets (buy/sell), and view real-time portfolio performance using live prices fetched from the Binance API.
 
 This project is ideal for learning **FastAPI, authentication, SQLAlchemy ORM, and financial logic** in a clean client–server architecture.
