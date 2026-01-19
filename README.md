@@ -129,9 +129,7 @@ Authorization: Bearer <access_token>
 ---
 
 🔮 **Future Enhancements**
-* Transaction history endpoint
 * Frontend integration 
-
 ---
 
 📖 **About**
