@@ -1,201 +1,181 @@
-💸 Digicoin – Crypto Portfolio Management API
+ 💸 Digicoin – Crypto Portfolio Management API
+
 📌 Overview
-Digicoin is a FastAPI-based backend application for managing a virtual cryptocurrency portfolio. It allows users to register, authenticate securely using JWT, add funds, trade crypto assets (buy/sell), and view real-time portfolio performance using live prices fetched from the Binance API.
-This project is ideal for learning FastAPI, authentication, SQLAlchemy ORM, and financial logic in a clean client–server architecture.
+Digicoin is a FastAPI-based backend application for managing a virtual cryptocurrency portfolio. It enables users to register, authenticate using JWT, add funds, buy/sell crypto assets, and track portfolio performance using live prices fetched from the Binance API.
+
+This project demonstrates a complete client–server backend architecture with authentication, database persistence, and external API integration.
 
 🔧 Features
 
-
 User registration & login
 
-
-JWT-based authentication (OAuth2 Bearer tokens)
-
+JWT-based authentication (OAuth2 Bearer)
 
 Add virtual money to wallet
 
+Buy and sell cryptocurrency assets
 
-Buy & sell cryptocurrency assets
+Live price fetching from Binance API
 
-
-Live crypto prices via Binance API
-
-
-Portfolio valuation & performance tracking
-
+Portfolio valuation and profit/loss calculation
 
 SQLite database with SQLAlchemy ORM
 
+Swagger & ReDoc auto-generated API docs
 
 CORS enabled for frontend integration
 
-
-Auto-generated Swagger & ReDoc documentation
-
-
-
 🚀 How to Run
+
 1️⃣ Create Virtual Environment
+
 python -m venv venv
 venv\Scripts\activate
 
+
 2️⃣ Install Dependencies
+
 pip install fastapi uvicorn sqlalchemy pydantic requests PyJWT
 
+
 3️⃣ Run the Server
+
 uvicorn main:app --reload
 
-Server runs at:
-👉 http://127.0.0.1:8000
+
+Server will start at:
+
+http://127.0.0.1:8000
+
 
 📘 API Documentation
 
+Swagger UI
 
-Swagger UI: http://127.0.0.1:8000/docs
+http://127.0.0.1:8000/docs
 
 
-ReDoc: http://127.0.0.1:8000/redoc
+ReDoc
 
+http://127.0.0.1:8000/redoc
 
 
-💻 File Descriptions
-main.py
+💻 Project Structure
 
+backend/
+│
+├── main.py          # FastAPI app & routes
+├── models.py        # SQLAlchemy models
+├── schemas.py       # Pydantic schemas
+├── crypto_portfolio.db
+└── README.md
 
-Contains FastAPI app initialization
 
+🔐 Authentication Example
 
-API routes for authentication, trading, and portfolio
+Login Request
 
+POST /login
+Content-Type: application/x-www-form-urlencoded
 
-JWT token handling
+username=nimisha
+password=1234
 
 
-Binance price integration
+Response
 
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "bearer"
+}
 
-models.py
 
-
-SQLAlchemy ORM models:
-
-
-User
-
-
-Portfolio
-
-
-Asset
-
-
-Transaction
-
-
-
-
-Defines database relationships
-
-
-schemas.py
-
-
-Pydantic models for request validation:
-
-
-UserCreate
-
-
-AddMoney
-
-
-TradeAsset
-
-
-
-
-
-📊 Core Endpoints
-Authentication
-
-
-POST /register – Create new user
-
-
-POST /login – Login & receive JWT token
-
-
-Wallet
-
-
-POST /add-money – Add funds to portfolio
-
-
-Trading
-
-
-POST /buy – Buy crypto asset
-
-
-POST /sell – Sell crypto asset
-
-
-Portfolio
-
-
-GET /portfolio – View assets, value & performance
-
-
-
-All protected routes require:
+Use Token in Headers
 
 Authorization: Bearer <access_token>
 
 
-🛠 Requirements
+💰 Add Money Example
 
+POST /add-money
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "amount": 5000
+}
+
+
+📈 Buy Asset Example
+
+POST /buy
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "symbol": "BTC",
+  "quantity": 0.01
+}
+
+
+📉 Sell Asset Example
+
+POST /sell
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "symbol": "BTC",
+  "quantity": 0.005
+}
+
+
+📊 Portfolio Response Example
+
+{
+  "total_added_money": 5000,
+  "available_money": 3200,
+  "total_value": 5400,
+  "performance_abs": 400,
+  "performance_rel": 8.0,
+  "assets": [
+    {
+      "symbol": "BTC",
+      "quantity": 0.005,
+      "current_price": 65000,
+      "total_value": 325,
+      "avg_purchase_price": 60000,
+      "performance_abs": 25,
+      "performance_rel": 8.33
+    }
+  ]
+}
+
+
+🛠 Requirements
 
 Python 3.9+
 
-
 FastAPI
-
 
 SQLAlchemy
 
-
 SQLite
 
-
-Internet connection (for live crypto prices)
-
-
+Internet connection (Binance API)
 
 ⚠️ Notes
 
-
 Passwords are stored in plain text (not production-ready)
 
+Uses Binance USDT trading pairs
 
-Prices are fetched from Binance USDT pairs
-
-
-Designed for learning, demos, and portfolio projects
-
-
+Intended for learning and portfolio demonstration
 
 🔮 Future Enhancements
 
-
 Password hashing (bcrypt)
 
+Transaction history endpoint
 
-Refresh tokens
-
-
-Frontend integration (Angular / React)
-
-
-
-📖 About
-Digicoin is a learning-focused FinTech backend project that simulates a crypto trading platform. It demonstrates real-world concepts like authentication, portfolio accounting, and external API integration using modern Python frameworks.
+Angular / React frontend
