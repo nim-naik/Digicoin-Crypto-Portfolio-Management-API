@@ -1,91 +1,201 @@
-💸 DIGIcoin – Crypto Portfolio Simulator
+💸 Digicoin – Crypto Portfolio Management API
+📌 Overview
+Digicoin is a FastAPI-based backend application for managing a virtual cryptocurrency portfolio. It allows users to register, authenticate securely using JWT, add funds, trade crypto assets (buy/sell), and view real-time portfolio performance using live prices fetched from the Binance API.
+This project is ideal for learning FastAPI, authentication, SQLAlchemy ORM, and financial logic in a clean client–server architecture.
 
-DIGIcoin is a frontend-based crypto portfolio simulation application that allows users to track virtual investments using real-time market prices. The project focuses on clean UI design, structured JavaScript logic, and practical portfolio calculations without real money involvement.
-
-📌 Project Overview
-DIGIcoin enables users to:
-
-
-Register and log in
+🔧 Features
 
 
-Add virtual funds
+User registration & login
 
 
-Buy and sell cryptocurrencies
+JWT-based authentication (OAuth2 Bearer tokens)
 
 
-Track portfolio value, profit/loss, and transaction history
+Add virtual money to wallet
 
 
-This project is designed for learning, demonstration, and portfolio purposes.
+Buy & sell cryptocurrency assets
 
 
-
-✨ Features
-
-
-User authentication
+Live crypto prices via Binance API
 
 
-Virtual wallet management
+Portfolio valuation & performance tracking
 
 
-Buy and sell crypto assets
+SQLite database with SQLAlchemy ORM
 
+
+CORS enabled for frontend integration
+
+
+Auto-generated Swagger & ReDoc documentation
 
 
 
-Transaction history tracking
+🚀 How to Run
+1️⃣ Create Virtual Environment
+python -m venv venv
+venv\Scripts\activate
+
+2️⃣ Install Dependencies
+pip install fastapi uvicorn sqlalchemy pydantic requests PyJWT
+
+3️⃣ Run the Server
+uvicorn main:app --reload
+
+Server runs at:
+👉 http://127.0.0.1:8000
+
+📘 API Documentation
+
+
+Swagger UI: http://127.0.0.1:8000/docs
+
+
+ReDoc: http://127.0.0.1:8000/redoc
+
+
+
+💻 File Descriptions
+main.py
+
+
+Contains FastAPI app initialization
+
+
+API routes for authentication, trading, and portfolio
+
+
+JWT token handling
+
+
+Binance price integration
+
+
+models.py
+
+
+SQLAlchemy ORM models:
+
+
+User
+
+
+Portfolio
+
+
+Asset
+
+
+Transaction
+
+
+
+
+Defines database relationships
+
+
+schemas.py
+
+
+Pydantic models for request validation:
+
+
+UserCreate
+
+
+AddMoney
+
+
+TradeAsset
 
 
 
 
 
-📂 Project Structure
-DIGIcoin/
-│
-├── index.html        # Main UI structure
-├── style.css         # Application styling
-├── script.js         # Core logic and functionality
-└── README.md         # Project documentation
+📊 Core Endpoints
+Authentication
 
 
-🚀 Getting Started
+POST /register – Create new user
 
 
-Clone the repository:
-git clone https://github.com/your-username/DIGIcoin.git
+POST /login – Login & receive JWT token
 
 
-
-Navigate to the project folder:
-cd DIGIcoin
+Wallet
 
 
-
-Open index.html in your browser:
-Double-click index.html
+POST /add-money – Add funds to portfolio
 
 
-
-No server or database setup is required.
-
-📈 Use Case
+Trading
 
 
-JavaScript logic demonstration
+POST /buy – Buy crypto asset
 
 
-Portfolio-ready project for GitHub
+POST /sell – Sell crypto asset
 
 
-UI/UX experimentation
+Portfolio
+
+
+GET /portfolio – View assets, value & performance
 
 
 
-⚠️ Disclaimer
-This application does not use real money and is not connected to live trading platforms. All transactions are simulated for educational purposes only.
+All protected routes require:
 
-📄 License
-This project is open-source and available for learning and personal use.
+Authorization: Bearer <access_token>
+
+
+🛠 Requirements
+
+
+Python 3.9+
+
+
+FastAPI
+
+
+SQLAlchemy
+
+
+SQLite
+
+
+Internet connection (for live crypto prices)
+
+
+
+⚠️ Notes
+
+
+Passwords are stored in plain text (not production-ready)
+
+
+Prices are fetched from Binance USDT pairs
+
+
+Designed for learning, demos, and portfolio projects
+
+
+
+🔮 Future Enhancements
+
+
+Password hashing (bcrypt)
+
+
+Refresh tokens
+
+
+Frontend integration (Angular / React)
+
+
+
+📖 About
+Digicoin is a learning-focused FinTech backend project that simulates a crypto trading platform. It demonstrates real-world concepts like authentication, portfolio accounting, and external API integration using modern Python frameworks.
