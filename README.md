@@ -1,4 +1,5 @@
 💸 DIGIcoin – Crypto Portfolio Simulator
+
 DIGIcoin is a frontend-based crypto portfolio simulation application that allows users to track virtual investments using real-time market prices. The project focuses on clean UI design, structured JavaScript logic, and practical portfolio calculations without real money involvement.
 
 📌 Project Overview
