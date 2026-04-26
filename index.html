@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💸 DIGIcoin Crypto Portfolio</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="container">
+    <header class="navbar">
+        <div class="nav-center">
+        <h1>💸 DIGIcoin Crypto Portfolio</h1>
+        <p>Track your fake money portfolio with real market data</p>
+        </div>
+
+        <button class="logout-btn hidden" id= "logoutBtn" onclick="logout()">
+          Logout
+        </button>
+    </header>
+
+    
+
+    <div id="portfolioSection" class="hidden">
+        <div class="portfolio-summary">
+            <div class="stat">
+                <div id="totalAddedMoney" class="stat-value">$0</div>
+                <div class="stat-label">Total Added</div>
+            </div>
+            <div class="stat">
+                <div id="availableMoney" class="stat-value">$0</div>
+                <div class="stat-label">Available</div>
+            </div>
+            <div class="stat">
+                <div id="portfolioValue" class="stat-value">$0</div>
+                <div class="stat-label">Portfolio Value</div>
+            </div>
+            <div class="stat">
+                <div id="totalProfit" class="stat-value">$ 0</div>
+                <div class="stat-label">Profit/Loss</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Actions</h2>
+            <div class="action-buttons">
+                <button onclick="showModal('addMoneyModal')">Add Money</button>
+                <button onclick="toSearch()">Search</button>
+                <button onclick="showModal('buyModal')">Buy Crypto</button>
+                <button onclick="showModal('sellModal')">Sell Crypto</button>
+            </div>
+        </div>
+
+<div class="section">
+    <h2>Assets</h2>
+    <table id="assetsTable">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Quantity</th>
+                <th>Current Price</th>
+                <th>Value</th>
+                <th>Profit/Loss (%)</th> </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+        <div class="section">
+            <h2>Transactions</h2>
+            <table id="transactionsTable">
+                <thead><tr><th>Symbol</th><th>Qty</th><th>Price</th><th>Type</th><th>Date</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="authSection">
+    <div class="modal-content" style="max-width: 400px; margin: 40px auto;">
+        <h2 style="margin-bottom: 20px;">Login</h2>
+        
+        <div class="form-group">
+            <input type="text" id="loginUsername" placeholder="Enter username">
+        </div>
+        
+        <div class="form-group">
+            <input type="password" id="loginPassword" placeholder="Enter password">
+        </div>
+        
+        <button style="width: 100%; margin: 10px 0;" onclick="login()">Log in</button>
+        
+        <p style="text-align: center; font-size: 0.9rem; margin-top: 15px;">
+            If you don't have registration in system please 
+            <a href="#" onclick="showModal('registerModal')" style="color: #3b82f6; text-decoration: none; font-weight: bold;">click on register</a>
+        </p>
+    </div>
+</div>
+
+<div id="registerModal" class="modal">
+    <div class="modal-content" style="max-width: 400px; margin: 40px auto;">
+        <h2 style="margin-bottom: 20px;">Register</h2>
+        <div class="form-group">
+            <input type="text" id="regUsername" placeholder="Choose a username">
+        </div>
+        <div class="form-group">
+            <input type="password" id="regPassword" placeholder="Create a password">
+        </div>
+        <button style="width: 100%; margin: 10px 0;" onclick="register()">Register</button>
+        
+        <p style="text-align: center; font-size: 0.9rem; margin-top: 15px;">
+            Already have an account? 
+            <a href="#" onclick="hideModals(); showModal('loginModal')" style="color: #3b82f6; text-decoration: none; font-weight: bold;">Log in</a>
+        </p>
+    </div>
+</div>
+
+<div id="addMoneyModal" class="modal">
+<div class="modal-content">
+    <h2>Add Money</h2>
+    <div class="form-group"><label>Amount:</label><input type="number" id="addAmount" min="0" step="0.01"></div>
+    <button onclick="addMoney()">Add</button>
+    <button onclick="hideModals()">Cancel</button>
+</div>
+</div>
+
+<div id="buyModal" class="modal">
+<div class="modal-content">
+    <h2>Buy Crypto</h2>
+    <div class="form-group"><label>Symbol:</label><input type="text" id="buySymbol" placeholder="Asset name"></div>
+    <div class="form-group"><label>Quantity:</label><input type="number" id="buyQuantity" min="0" step="0.01"></div>
+    <button onclick="trade('buy')">Buy</button>
+    <button onclick="hideModals()">Cancel</button>
+</div>
+</div>
+
+<div id="sellModal" class="modal">
+<div class="modal-content">
+    <h2>Sell Crypto</h2>
+    <div class="form-group"><label>Symbol:</label><input type="text" id="sellSymbol" placeholder="Asset name"></div>
+    <div class="form-group"><label>Quantity:</label><input type="number" id="sellQuantity" min="0" step="0.01"></div>
+    <button onclick="trade('sell')">Sell</button>
+    <button onclick="hideModals()">Cancel</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header.navbar {
+    position: relative;
+    text-align: center;
+    padding: 25px 40px;
+    margin-bottom: 30px;
+    background: #1e1e1e;
+    border-radius: 12px;
+}
+
+header.navbar h1 {
+    font-size: 1.9rem;
+    margin-bottom: 6px;
+}
+
+header.navbar p {
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.logout-btn {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-30%);
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+
+.logout-btn:hover {
+    background: #dc2626;
+}
+
+.portfolio-summary {
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 2.2em;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.stat-label {
+    color: #9ca3af;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.section {
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+th,
+td {
+    padding: 14px 12px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #333;
+    white-space: nowrap;
+}
+
+th {
+    background: #262626;
+    font-weight: 600;
+}
+
+tr:hover {
+    background: #1a1a1a;
+}
+
+button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 5px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.auth-buttons,
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.action-buttons button {
+    flex: 1;
+    max-width: 140px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.modal-content {
+    background: #1e1e1e;
+    margin: 8% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    background: #262626;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #fff;
+    transition: border 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 2000;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content{
+    margin-top: 5px;
+}
+
+#authSection .section {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    padding: 40px;
+}
+
+#authSection input {
+    background: #121212;
+    border: 1px solid #444;
+    padding: 12px;
+}
+
+#authSection h2, 
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+
+.form-group {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#addMoneyModal .form-group,
+#buyModal .form-group,
+#sellModal .form-group {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .logout-btn {
+        position: static;
+        transform: none;
+        margin-top: 15px;
+    }
+
+    table {
+        font-size: 0.9em;
+    }
+}
