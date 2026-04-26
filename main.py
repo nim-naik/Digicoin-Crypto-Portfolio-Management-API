@@ -21,7 +21,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl='login')
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,  # must be boolean
+    allow_credentials=True,  
     allow_methods=["*"],
     allow_headers=["*"]
 )
@@ -31,7 +31,7 @@ engine = create_engine('sqlite:///./crypto_portfolio.db', connect_args={'check_s
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base.metadata.create_all(bind=engine)
 
-// SECRET_KEY = ""
+SECRET_KEY = ""
 
 
 def get_db():
@@ -56,7 +56,6 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
         raise HTTPException(status_code=401, detail="Not authenticated")
 
 
-# --- Get crypto price ---
 def get_crypto_price(symbol: str):
     try:
         response = requests.get(f'https://api.binance.com/api/v3/ticker/price?symbol={symbol}USDT', timeout=5)
@@ -64,8 +63,6 @@ def get_crypto_price(symbol: str):
     except:
         return 0.0
 
-
-# --- Endpoints ---
 
 @app.post('/register')
 def register(user: UserCreate, db: Session = Depends(get_db)):
