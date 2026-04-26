@@ -1,181 +1,60 @@
- 💸 Digicoin – Crypto Portfolio Management API
+## 💸 DIGIcoin – Full-Stack Crypto Portfolio Tracker
 
-📌 Overview
-Digicoin is a FastAPI-based backend application for managing a virtual cryptocurrency portfolio. It enables users to register, authenticate using JWT, add funds, buy/sell crypto assets, and track portfolio performance using live prices fetched from the Binance API.
+**DIGIcoin** is a comprehensive full-stack application that allows users to manage a virtual cryptocurrency portfolio using real-time market data. The system integrates a **FastAPI** backend with a **Vanilla JavaScript** frontend to provide a seamless tracking experience.
 
-This project demonstrates a complete client–server backend architecture with authentication, database persistence, and external API integration.
+---
 
-🔧 Features
+### 🔧 Key Features
 
-User registration & login
+* **User Authentication**: Secure registration and login system utilizing **JWT (OAuth2 Bearer)** tokens for session management.
+* **Virtual Wallet**: Users can add virtual USD to their account to simulate trading without financial risk.
+* **Real-Time Trading**: Supports buying and selling crypto assets with live price fetching via the **Binance API**.
+* **Performance Analytics**: Automatic calculation of total portfolio value, absolute profit/loss, and percentage returns.
+* **Market Research**: Integrated search tool that verifies asset availability through the **CoinGecko API** and links to detailed market pages.
+* **Transaction Logging**: Maintains a detailed history of all trades, including timestamps, asset quantities, and execution prices.
 
-JWT-based authentication (OAuth2 Bearer)
+---
 
-Add virtual money to wallet
+### 💻 Project Structure
 
-Buy and sell cryptocurrency assets
+| File | Description |
+| :--- | :--- |
+| `main.py` | Core FastAPI application containing API routes and business logic. |
+| `models.py` | SQLAlchemy database models for Users, Portfolios, Assets, and Transactions. |
+| `schemas.py` | Pydantic models for data validation and request/response structures. |
+| `index.html` | Responsive UI structure featuring trading modals and dashboard sections. |
+| `script.js` | Frontend logic for API communication, UI updates, and token management. |
+| `style.css` | Custom dark-themed styling and responsive layout configurations. |
 
-Live price fetching from Binance API
+---
 
-Portfolio valuation and profit/loss calculation
+### 🚀 Getting Started
 
-SQLite database with SQLAlchemy ORM
+#### 1. Backend Configuration
+1.  **Environment Setup**: Create and activate a Python virtual environment.
+2.  **Dependencies**: Install required packages: `fastapi`, `uvicorn`, `sqlalchemy`, `pydantic`, `requests`, and `PyJWT`.
+3.  **Launch**: Run the server using `uvicorn main:app --reload` to start the backend at `http://127.0.0.1:8000`.
 
-Swagger & ReDoc auto-generated API docs
+#### 2. Frontend Configuration
+* Open `index.html` directly in a browser or serve it via a local web server.
+* Ensure the backend is running to allow the frontend to authenticate and fetch live data.
 
-CORS enabled for frontend integration
+---
 
-🚀 How to Run
+### 📘 API Endpoints
 
-1️⃣ Create Virtual Environment
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/register` | Create a new user account and initialize a portfolio. |
+| `POST` | `/login` | Authenticate user and receive a JWT access token. |
+| `POST` | `/add-money`| Deposit virtual funds into the user's available balance. |
+| `POST` | `/buy` | Purchase a crypto asset using live Binance ticker prices. |
+| `POST` | `/sell` | Sell a portion or all of a held asset back into virtual USD. |
+| `GET` | `/portfolio` | Retrieve current holdings, total value, and performance metrics. |
 
-python -m venv venv
-venv\Scripts\activate
+---
 
-
-2️⃣ Install Dependencies
-
-pip install fastapi uvicorn sqlalchemy pydantic requests PyJWT
-
-
-3️⃣ Run the Server
-
-uvicorn main:app --reload
-
-
-Server will start at:
-
-http://127.0.0.1:8000
-
-
-📘 API Documentation
-
-Swagger UI
-
-http://127.0.0.1:8000/docs
-
-
-ReDoc
-
-http://127.0.0.1:8000/redoc
-
-
-💻 Project Structure
-
-backend/
-│
-├── main.py          # FastAPI app & routes
-├── models.py        # SQLAlchemy models
-├── schemas.py       # Pydantic schemas
-├── crypto_portfolio.db
-└── README.md
-
-
-🔐 Authentication Example
-
-Login Request
-
-POST /login
-Content-Type: application/x-www-form-urlencoded
-
-username=nimisha
-password=1234
-
-
-Response
-
-{
-  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "token_type": "bearer"
-}
-
-
-Use Token in Headers
-
-Authorization: Bearer <access_token>
-
-
-💰 Add Money Example
-
-POST /add-money
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "amount": 5000
-}
-
-
-📈 Buy Asset Example
-
-POST /buy
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "symbol": "BTC",
-  "quantity": 0.01
-}
-
-
-📉 Sell Asset Example
-
-POST /sell
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "symbol": "BTC",
-  "quantity": 0.005
-}
-
-
-📊 Portfolio Response Example
-
-{
-  "total_added_money": 5000,
-  "available_money": 3200,
-  "total_value": 5400,
-  "performance_abs": 400,
-  "performance_rel": 8.0,
-  "assets": [
-    {
-      "symbol": "BTC",
-      "quantity": 0.005,
-      "current_price": 65000,
-      "total_value": 325,
-      "avg_purchase_price": 60000,
-      "performance_abs": 25,
-      "performance_rel": 8.33
-    }
-  ]
-}
-
-
-🛠 Requirements
-
-Python 3.9+
-
-FastAPI
-
-SQLAlchemy
-
-SQLite
-
-Internet connection (Binance API)
-
-⚠️ Notes
-
-Passwords are stored in plain text (not production-ready)
-
-Uses Binance USDT trading pairs
-
-Intended for learning and portfolio demonstration
-
-🔮 Future Enhancements
-
-Password hashing (bcrypt)
-
-Transaction history endpoint
-
-Angular / React frontend
+### ⚠️ Important Notes
+* **Security**: Passwords are currently stored in plain text; for production, implement hashing (e.g., bcrypt).
+* **Trading Pairs**: The system defaults to **USDT** pairs on Binance (e.g., "BTC" queries "BTCUSDT").
+* **Development**: The backend is configured with **CORS** enabled to allow requests from any origin.
