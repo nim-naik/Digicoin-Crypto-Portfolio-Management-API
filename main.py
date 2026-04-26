@@ -31,7 +31,7 @@ engine = create_engine('sqlite:///./crypto_portfolio.db', connect_args={'check_s
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base.metadata.create_all(bind=engine)
 
-SECRET_KEY = 'some-key-but-not-this-one'
+// SECRET_KEY = 
 
 
 def get_db():
