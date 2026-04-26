@@ -59,9 +59,13 @@
 * **Trading Pairs**: The system defaults to **USDT** pairs on Binance (e.g., "BTC" queries "BTCUSDT").
 * **Development**: The backend is configured with **CORS** enabled to allow requests from any origin.
 
-.
+---
 
 🔮 Future Roadmap
-[ ] Implement Password Hashing using passlib (bcrypt).
+* **Secure Password Hashing**: Implement passlib with bcrypt to replace plain-text storage and protect user credentials from database leaks.
 
-[ ] Add Interactive Charts for portfolio history using Chart.js.
+* **Interactive Analytics**: Integrate Chart.js to provide users with visual historical data and asset distribution breakdowns.
+
+* **Environment Variables**: Move the SECRET_KEY into a .env file to prevent sensitive configuration data from being exposed in the source code.
+
+* **Token Expiry**: Add expiration timestamps to JWT tokens to minimize the impact of potential session hijacking.
