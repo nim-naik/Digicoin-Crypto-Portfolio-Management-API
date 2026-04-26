@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "";
 let token = localStorage.getItem("token");
 document.getElementById("regUsername").value="";
 document.getElementById("regPassword").value="";
