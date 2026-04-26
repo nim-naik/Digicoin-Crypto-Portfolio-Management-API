@@ -143,7 +143,7 @@ async function loadPortfolio() {
         portfolio.assets.forEach(a => {
             const row = tbody.insertRow();
             
-            // Logic for Profit/Loss display
+            
             const pnlAbs = a.performance_abs; // Absolute $
             const pnlRel = a.performance_rel; // Relative %
             const color = pnlAbs >= 0 ? "#4ade80" : "#ef4444";
@@ -265,7 +265,7 @@ window.addEventListener("load", checkAuth);
 async function toSearch(){
    
    var symbolToSearch = prompt("Enter the name of cryptocurrency to search (in small letters).")
-   var targetUrl =`https://api.coingecko.com/api/v3/coins/${symbolToSearch}`; // checks availabilty of symbol on coin gecko site through coin gecko api.
+   var targetUrl =`https://api.coingecko.com/api/v3/coins/${symbolToSearch}`; 
 
    if(symbolToSearch != "" ){
     if(symbolToSearch !== null){
@@ -273,7 +273,7 @@ async function toSearch(){
         const response = await fetch(targetUrl);
 
         if (response.ok) {
-            window.open(`https://www.coingecko.com/en/coins/${symbolToSearch}`, "_blank"); // opens webpage of details of particular symbol.
+            window.open(`https://www.coingecko.com/en/coins/${symbolToSearch}`, "_blank");
         } else if (response.status === 404){
             alert(`Sorry, symbol "${symbolToSearch}" was not found.`);
         }
