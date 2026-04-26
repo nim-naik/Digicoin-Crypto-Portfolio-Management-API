@@ -58,3 +58,10 @@
 * **Security**: Passwords are currently stored in plain text; for production, implement hashing (e.g., bcrypt).
 * **Trading Pairs**: The system defaults to **USDT** pairs on Binance (e.g., "BTC" queries "BTCUSDT").
 * **Development**: The backend is configured with **CORS** enabled to allow requests from any origin.
+
+.
+
+🔮 Future Roadmap
+[ ] Implement Password Hashing using passlib (bcrypt).
+
+[ ] Add Interactive Charts for portfolio history using Chart.js.
